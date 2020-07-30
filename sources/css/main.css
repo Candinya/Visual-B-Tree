@@ -109,6 +109,10 @@ button.half {
     width: 40%;
 }
 
+button.tri {
+    width: 24%;
+}
+
 button.auto {
     width: fit-content;
 }

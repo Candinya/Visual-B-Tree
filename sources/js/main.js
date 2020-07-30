@@ -94,6 +94,25 @@ const treeCheck = () => {
 };
 
 /**
+ * @method 查找键值
+ * @param {array} keys 键值串
+ * @returns {null}
+ */
+const searchKeys = (keys) => {
+    checkTree();
+    keys.forEach((skey) => {
+        checkKey(skey);
+        const key = isNumber(skey) ? parseFloat(skey) : skey;
+        if (keyExist(key)) {
+            alertInfo('success', `键值 ${key} 存在树中`);
+        } else {
+            alertInfo('warning', `键值 ${key} 不在树中`);
+        }
+    });
+    drawTree();
+};
+
+/**
  * @method 插入键值
  * @param {array} keys 键值串
  * @returns {null}
@@ -238,6 +257,7 @@ const treeInit = (template) => {
  * @returns {null}
  */
 const enableButtons = () => {
+    toggleButton('btn-edit-search', false);
     toggleButton('btn-edit-add', false);
     toggleButton('btn-edit-del', false);
     toggleButton('btn-show-viz', false);
@@ -379,6 +399,9 @@ const clickBtnEditGenerate = () => {
 const clickBtnGenKeys = () => {
     generateKeys();
     closeGenTool();
+};
+const clickBtnEditSearch = () => {
+    searchKeys(getKeys());
 };
 const clickBtnEditAdd = () => {
     insertKeys(getKeys());
