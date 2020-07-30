@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <title>看得见的B树</title>
+        <link rel="stylesheet" href="./sources/css/main.css" type="text/css" media="all">
+    </head>
+    <body>
+        <div id="tree-canvas">
+            <div class="default-text">
+                <h1>可视化B树</h1>
+                <h2>Visual B Tree</h2>
+            </div>
+        </div>
+        <div id="sidebar">
+            <h1>可视化 B 树</h1>
+            <div id="tools">
+                <h2>控制台</h2>
+                <section id="tools-init">
+                    <div title="B树的阶数">
+                        <label>B树的阶数 M:</label>
+                        <input id="input-btree-m" class="small" type="number" min="2" value="3">
+                    </div>
+                    <div title="初始化方式">
+                        <button id="btn-init-empty" class="half" onclick="clickBtnInitEmpty()">初始化空树</button>
+                        <button id="btn-init-template" class="half" onclick="clickBtnInitTemplate()">用模板初始化</button>
+                    </div>
+                </section>
+                <section id="tools-edit">
+                    <div title="操作的关键字" id="form-input-keys">
+                        <input id="input-edit-keys" placeholder="要操作的键值，逗号分隔"><button id="btn-edit-generate" class="special" onclick="clickBtnEditGenerate()">序列</button>
+                    </div>
+                    <div title="生成关键字序列" id="form-generate-keys">
+                        <input id="input-gen-keys-start" class="small" placeholder="起始">
+                        <input id="input-gen-keys-end" class="small" placeholder="终末">
+                        <button id="btn-gen-keys" class="special auto" onclick="clickBtnGenKeys()">生成</button>
+                    </div>
+                    <div title="添加/删除">
+                        <button id="btn-edit-add" class="half" onclick="clickBtnEditAdd()" disabled>插入键值</button>
+                        <button id="btn-edit-del" class="half" onclick="clickBtnEditDel()" disabled>删除键值</button>
+                    </div>
+                </section>
+                <section id="tools-show">
+                    <div title="格式化输出"">
+                        <button id="btn-show-viz" onclick="clickBtnShowViz()" disabled>转化成Viz源</button>
+                        <button id="btn-show-json" onclick="clickBtnShowJson()" disabled>转化成JSON</button>
+                        <button id="btn-show-traverse" onclick="clickBtnShowTraverse()" disabled>遍历树</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div id="text-layer" class="page">
+            <section class="text dialog">
+                <h2 id="text-title" class="dialog-header"></h2>
+                <textarea id="text-area" class="dialog-inner"></textarea>
+                <div class="dialog-footer">
+                    <button id="btn-text-submit" class="special auto" onclick="clickBtnTextSubmit()">-</button>
+                    <button id="btn-text-cancel" class="auto" onclick="clickBtnTextCancel()">取消</button>
+                </div>
+            </section>
+        </div>
+
+        <div id="alert-layer" class="alert"></div>
+
+        <footer>
+            <script async src="https://cdn.jsdelivr.net/npm/viz.js@1.8.2/viz.min.js"></script>
+            <script async src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+            <script defer src="./sources/js/btree.js"></script>
+            <script defer src="./sources/js/main.js"></script>
+        </footer>
+    </body>
+</html>
