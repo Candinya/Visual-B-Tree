@@ -358,15 +358,21 @@ const closeGenTool = () => {
  */
 const generateKeys = () => {
     const targElement = document.getElementById('input-edit-keys');
-    const start = document.getElementById('input-gen-keys-start').value;
-    const end   = document.getElementById('input-gen-keys-end').value;
+    const start = parseInt(document.getElementById('input-gen-keys-start').value);
+    const end   = parseInt(document.getElementById('input-gen-keys-end').value);
     if (!start || !end) {
         alertInfo('error', '输入无效');
         return;
     }
     let keys = [];
-    for (let i = start; i <= end; i++) {
-        keys.push(i);
+    if (end > start) {
+        for (let i = start; i <= end; i++) {
+            keys.push(i);
+        }
+    } else {
+        for (let i = start; i >= end; i--) {
+            keys.push(i);
+        }
     }
     targElement.value = keys.join(',');
 };
